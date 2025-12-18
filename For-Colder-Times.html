@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .Upper-Grid {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        border-bottom: 2px solid gray;
+
+    }
+
+    .Company-Logo {
+        width: 150px;
+        height: auto;
+        border: none;
+        background-color: white;
+        cursor: pointer;
+        margin-right: 13px;
+    }
+
+    .Left-Section {
+        width: 650px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 100px;
+    }
+
+    .Right-Section {
+        width: 650px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .Menu-Button {
+        width: 50px;
+        height: auto;
+        border: none;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .Profile {
+        width: 70px;
+        height: auto;
+        border: none;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .Wishlist {
+        width: 45px;
+        height: auto;
+        border: none;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .Shopping-Bag {
+        width: 45px;
+        height: auto;
+        border: none;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .Search-Bar {
+        width: 400px;
+        height: 30px;
+        border: 2px solid gray;
+        border-radius: 10px;
+        padding-left: 10px;
+    }
+
+</style>
+<body>
+    <div class="Upper-Grid">
+        <div class="Left-Section">
+            <button class="Menu-Button">
+                <img src="Images/Menu-Icon.png" alt="Menu" class="Menu-Button">
+            </button>
+            <input type="text" class="Search-Bar" placeholder="Search">
+        </div>
+        <a href="index.html" aria-label="Go to Home Page">
+        <button class="Company-Logo">
+            <img src="Images/FA$ION-LOGO.png" alt="FA$ION Logo" class="Company-Logo">
+        </button>   
+        </a>
+        <div class="Right-Section">
+            <a href="Profile-Login-Register.html" aria-label="Go to Profile Login/Register">
+                <button class="Profile">
+                    <img src="Images/Profile-Icon.jpg" alt="Profile" class="Profile">
+                </button>
+            </a>
+            <a href="Whishlist.html">
+            <button class="Wishlist">
+                <img src="Images/Wishlist-Icon.png" alt="Wishlist" class="Wishlist">
+            </button>
+            </a>
+            <a href="Cart.html">
+            <button class="Shopping-Bag">
+                <img src="Images/ShoppingBag-Icon.png" alt="Shopping Bag" class="Shopping-Bag">
+            </button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
