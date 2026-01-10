@@ -104,24 +104,8 @@
         margin-top: 30px;
     }
 
-    .Clothes_Window_Right {
-        margin-top: 30px;
-        width: 400px;
-        height: 500px;
-        border: 2px solid gray;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .Clothes_Window_Middle {
-        margin-top: 30px;
-        width: 400px;
-        height: 500px;
-        border: 2px solid gray;
-        position: relative;
-        overflow: hidden;
-    }
-
+    .Clothes_Window_Right,
+    .Clothes_Window_Middle,
     .Clothes_Window_Left {
         margin-top: 30px;
         width: 400px;
@@ -137,9 +121,9 @@
         border: 1px solid gray;
         margin-top: 0;
         background-color: rgba(211, 211, 211, 0.479);
-        position: absolute;
         bottom: 0;
         pointer-events: none;
+        position: absolute;
     }
 
     p {
@@ -158,7 +142,13 @@
         object-fit: cover;
         transition: transform 0.5s ease;
         transform-origin: center center;
+    }
 
+    body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
     }
 
     .Clothes_Window_Right:hover img,
@@ -166,6 +156,8 @@
     .Clothes_Window_Left:hover img {
         transform: scale(1.1);
     }
+
+    
 
     /* Side panel styles (CSS-only toggle using checkbox) */
     .menu-toggle {
@@ -307,13 +299,13 @@
         </div>
         <a href="index.html" aria-label="Go to Home Page">
             <button class="Company-Logo">
-                <img src="Images/FA$ION-LOGO.png" alt="FA$ION Logo" class="Company-Logo">
+                <img src="Images/FA$ION-LOGO_png.png" alt="FA$ION Logo" class="Company-Logo">
             </button>
         </a>
         <div class="Right-Section">
             <a href="Upper_Grid/Profile-Login-Register.html" aria-label="Go to Profile Login/Register">
                 <button class="Profile">
-                    <img src="Images/Profile-Icon.jpg" alt="Profile" class="Profile">
+                    <img src="Images/Profile-Icon.png" alt="Profile" class="Profile">
                 </button>
             </a>
             <a href="Upper_Grid/Whishlist.html">
