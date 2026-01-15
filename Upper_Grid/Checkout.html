@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - FA$ION</title>
+    <link rel="icon" type="image/png" href="../Images/FA$ION-LOGO.png">
+</head>
+<style>
+    .Upper-Grid {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        border-bottom: 2px solid gray;
+        width: 100%;
+    }
+
+    .Company-Logo {
+        width: 150px;
+        height: auto;
+        border: none;
+        background-color: white;
+        cursor: pointer;
+        margin-right: 13px;
+    }
+
+    .Left-Section {
+        width: 650px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 100px;
+    }
+
+    .Right-Section {
+        width: 650px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .Menu-Button {
+        width: 50px;
+        height: auto;
+        border: none;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .Profile {
+        width: 70px;
+        height: auto;
+        border: none;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .Wishlist {
+        width: 45px;
+        height: auto;
+        border: none;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .Shopping-Bag {
+        width: 45px;
+        height: auto;
+        border: none;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .Search-Bar {
+        width: 400px;
+        height: 30px;
+        border: 2px solid gray;
+        border-radius: 10px;
+        padding-left: 10px;
+    }
+
+    /* Side panel styles (CSS-only toggle using checkbox) */
+    .menu-toggle {
+        display: none;
+    }
+
+    .SidePanel {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        width: 280px;
+        background: #ffffff;
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+        transform: translateX(-110%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+        padding: 20px;
+    }
+
+    /* when the checkbox is checked, show panel and overlay */
+    #menuToggle:checked~.SidePanel {
+        transform: translateX(0);
+    }
+
+    .Close-Button {
+        background: none;
+        border: none;
+        font-size: 28px;
+        position: absolute;
+        right: 12px;
+        top: 8px;
+        cursor: pointer;
+        display: inline-block;
+        padding: 2px 6px;
+    }
+
+    .SideNav {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .SideNav a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        padding: 8px 4px;
+    }
+
+    /* Category styles */
+    .Category {
+        margin-bottom: 8px;
+    }
+
+    .category-toggle {
+        display: none;
+    }
+
+    .CategoryLabel {
+        display: block;
+        padding: 12px 8px;
+        font-weight: bold;
+        color: #333;
+        cursor: pointer;
+        user-select: none;
+        border-radius: 4px;
+        transition: background 0.2s;
+    }
+
+    .CategoryLabel:hover {
+        background-color: #f0f0f0;
+    }
+
+    .SubItems {
+        display: none;
+        flex-direction: column;
+        gap: 4px;
+        padding-left: 16px;
+        margin-top: 4px;
+    }
+
+    /* Show subItems when checkbox is checked */
+    .category-toggle:checked+.CategoryLabel+.SubItems {
+        display: flex;
+    }
+
+    .SubItems a {
+        padding: 8px 4px;
+        font-size: 14px;
+        color: #555;
+    }
+
+    .SubItems a:hover {
+        color: #000;
+        font-weight: 600;
+    }
+
+    .Overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 900;
+        display: none;
+    }
+
+    /* show overlay when checkbox is checked */
+    #menuToggle:checked~.Overlay {
+        display: block;
+    }
+
+    footer {
+        margin-top: 20px;
+        padding: 10px 0;
+        background-color: #f1f1f18c;
+        text-align: center;
+
+        width: 100%;
+        bottom: 0;
+
+    }
+
+    .p-footer {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        color: #666;
+    }
+
+    /* Checkout Page Styles */
+    .Checkout-Container {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 30px;
+    }
+
+    .Checkout-Form {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .Form-Section {
+        margin-bottom: 30px;
+    }
+
+    .Form-Section h3 {
+        color: #333;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #667eea;
+        padding-bottom: 10px;
+        font-size: 18px;
+    }
+
+    .Form-Row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    .Form-Row.full {
+        grid-template-columns: 1fr;
+    }
+
+    .Form-Group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .Form-Group label {
+        margin-bottom: 8px;
+        color: #333;
+        font-weight: 500;
+    }
+
+    .Form-Group input,
+    .Form-Group select {
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+        font-family: Arial, sans-serif;
+    }
+
+    .Form-Group input:focus,
+    .Form-Group select:focus {
+        outline: none;
+        border-color: #667eea;
+        box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+    }
+
+    .Payment-Methods {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .Payment-Method {
+        flex: 1;
+    }
+
+    .Payment-Method input[type="radio"] {
+        display: none;
+    }
+
+    .Payment-Method label {
+        display: block;
+        padding: 15px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .Payment-Method input[type="radio"]:checked+label {
+        border-color: #667eea;
+        background-color: #f5f5ff;
+    }
+
+    .Order-Summary {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        height: fit-content;
+        position: sticky;
+        top: 20px;
+    }
+
+    .Order-Summary h3 {
+        color: #333;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #667eea;
+        padding-bottom: 10px;
+    }
+
+    .Summary-Line {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        color: #666;
+        font-size: 14px;
+    }
+
+    .Summary-Line.total {
+        border-top: 2px solid #eee;
+        padding-top: 15px;
+        font-weight: bold;
+        color: #333;
+        font-size: 18px;
+    }
+
+    .Order-Item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+        font-size: 14px;
+    }
+
+    .Order-Item:last-of-type {
+        border-bottom: none;
+    }
+
+    .Place-Order-Btn {
+        width: 100%;
+        padding: 15px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .Place-Order-Btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4);
+    }
+
+    .Back-Btn {
+        width: 100%;
+        padding: 10px;
+        background-color: #f0f0f0;
+        color: #333;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .Back-Btn:hover {
+        background-color: #e0e0e0;
+    }
+
+   .Cart-Steps {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: 30px auto;
+        width: 1200px;
+        height: 80px;
+        border: #667eea solid 2px;
+    }
+    .Step-Link {
+        text-decoration: none;
+        flex: 1;
+        border-left: #667eea solid 2px;
+        color: inherit;
+    }
+
+    .Step {
+        flex: 1;
+        text-align: center;
+        padding: 20px;
+        border-right: #667eea solid 2px;
+        padding: 32px;
+        font-weight: bold;
+        width: 300px;
+        
+    }
+
+    .Active-Step {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 32px 60px;
+        border-left: none;
+    }
+
+    .Step:last-child {
+        border-right: none;
+    }
+
+    @media (max-width: 768px) {
+        .Checkout-Container {
+            grid-template-columns: 1fr;
+        }
+
+        .Form-Row {
+            grid-template-columns: 1fr;
+        }
+
+        .Order-Summary {
+            position: static;
+        }
+    }
+
+    /* Payment Method Details */
+    .Payment-Details {
+        display: none;
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+        border-left: 4px solid #667eea;
+    }
+
+    .Payment-Details.active {
+        display: block;
+    }
+
+    /* Success Message */
+    .Success-Message {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        z-index: 2000;
+        text-align: center;
+        max-width: 400px;
+    }
+
+    .Success-Message.active {
+        display: block;
+        animation: slideIn 0.5s ease;
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translate(-50%, -60%);
+            opacity: 0;
+        }
+
+        to {
+            transform: translate(-50%, -50%);
+            opacity: 1;
+        }
+    }
+
+    .Success-Message h2 {
+        color: #4caf50;
+        margin-bottom: 15px;
+    }
+
+    .Success-Message p {
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+    .Success-Message .order-number {
+        font-weight: bold;
+        color: #333;
+        margin: 10px 0;
+    }
+
+    .Success-Overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1999;
+    }
+
+    .Success-Overlay.active {
+        display: block;
+    }
+</style>
+
+<body>
+    <div class="Upper-Grid">
+        <div class="Left-Section">
+            <label for="menuToggle" class="Menu-Button" role="button" aria-label="Toggle menu"
+                aria-controls="sidePanel">
+                <img src="../Images/Menu-Icon.png" alt="Menu" class="Menu-Button">
+            </label>
+            <input type="text" class="Search-Bar" placeholder="Search">
+        </div>
+        <a href="../index.html" aria-label="Go to Home Page">
+            <button class="Company-Logo">
+                <img src="../Images/FA$ION-LOGO_png.png" alt="FA$ION Logo" class="Company-Logo">
+            </button>
+        </a>
+        <div class="Right-Section">
+            <a href="../Upper_Grid/Login.html" aria-label="Go to Profile Login/Register">
+                <button class="Profile">
+                    <img src="../Images/Profile-Icon.png" alt="Profile" class="Profile">
+                </button>
+            </a>
+            <a href="../Upper_Grid/Whishlist.html">
+                <button class="Wishlist">
+                    <img src="../Images/Wishlist-Icon.png" alt="Wishlist" class="Wishlist">
+                </button>
+            </a>
+            <a href="../Upper_Grid/Cart.html">
+                <button class="Shopping-Bag">
+                    <img src="../Images/ShoppingBag-Icon.png" alt="Shopping Bag" class="Shopping-Bag">
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <input type="checkbox" id="menuToggle" class="menu-toggle" hidden>
+    <div id="sidePanel" class="SidePanel" aria-hidden="true">
+        <label for="menuToggle" class="Close-Button" aria-label="Close menu">&times;</label>
+        <nav class="SideNav">
+            <!-- Men Category -->
+            <div class="Category">
+                <input type="checkbox" id="menToggle" class="category-toggle" hidden>
+                <label for="menToggle" class="CategoryLabel">👕 Men</label>
+                <div class="SubItems">
+                    <a href="../Mens_Clothes/Tops.html">Tops</a>
+                    <a href="../Mens_Clothes/Pants.html">Pants</a>
+                    <a href="../Mens_Clothes/Suits.html">Suits</a>
+                    <a href="../Mens_Clothes/Shoes.html">Shoes</a>
+                </div>
+            </div>
+
+            <!-- Women Category -->
+            <div class="Category">
+                <input type="checkbox" id="womenToggle" class="category-toggle" hidden>
+                <label for="womenToggle" class="CategoryLabel">👗 Women</label>
+                <div class="SubItems">
+                    <a href="../Womens_Clothes/Tops.html">Tops</a>
+                    <a href="../Womens_Clothes/Pants.html">Pants</a>
+                    <a href="../Womens_Clothes/Dresses.html">Dresses</a>
+                    <a href="../Womens_Clothes/Shoes.html">Shoes</a>
+                </div>
+            </div>
+
+            <!-- Accessories Category -->
+            <div class="Category">
+                <input type="checkbox" id="accessoriesToggle" class="category-toggle" hidden>
+                <label for="accessoriesToggle" class="CategoryLabel">💍 Accessories</label>
+                <div class="SubItems">
+                    <a href="../Accesories/Bags.html">Bags</a>
+                    <a href="../Accesories/Jewelery.html">Jewelry</a>
+                    <a href="../Accesories/Hats.html">Hats</a>
+                    <a href="../Accesories/Watches.html">Watches</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div id="overlay" class="Overlay" aria-hidden="true"></div>
+
+   <div class="Cart-Steps">
+        <a class="Step-Link" href="#">
+            <div class="Step">
+                <div class="Step-Label">1. Cart</div>
+            </div>
+        </a>
+
+        <a class="Step-Link" href="Checkout.html">
+            <div class="Step Active-Step">
+                <div class="Step-Label">2. Checkout</div>
+            </div>
+        </a>
+
+        <a class="Step-Link" href="#">
+            <div class="Step">
+                <div class="Step-Label">3. Confirmation</div>
+            </div>
+        </a>
+    </div>
+
+    <!-- Main Checkout Content -->
+    <div class="Checkout-Container">
+        <!-- Left: Form -->
+        <form method="POST" action="" id="checkoutForm" class="Checkout-Form">
+            <!-- Shipping Information -->
+            <div class="Form-Section">
+                <h3>Shipping Information</h3>
+                <div class="Form-Row">
+                    <div class="Form-Group">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="Form-Group">
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+                <div class="Form-Row full">
+                    <div class="Form-Group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                <div class="Form-Row full">
+                    <div class="Form-Group">
+                        <label for="address">Street Address *</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+                </div>
+                <div class="Form-Row">
+                    <div class="Form-Group">
+                        <label for="city">City *</label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                    <div class="Form-Group">
+                        <label for="state">State/Province *</label>
+                        <input type="text" id="state" name="state" required>
+                    </div>
+                </div>
+                <div class="Form-Row">
+                    <div class="Form-Group">
+                        <label for="zip">ZIP/Postal Code *</label>
+                        <input type="text" id="zip" name="zip" required>
+                    </div>
+                    <div class="Form-Group">
+                        <label for="country">Country *</label>
+                        <select id="country" name="country" required>
+                            <option value="">Select Country</option>
+                            <option value="us">United States</option>
+                            <option value="ca">Canada</option>
+                            <option value="uk">United Kingdom</option>
+                            <option value="au">Australia</option>
+                            <option value="de">Germany</option>
+                            <option value="fr">France</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="Form-Row full">
+                    <div class="Form-Group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shipping Method -->
+            <div class="Form-Section">
+                <h3>Shipping Method</h3>
+                <div class="Form-Row full">
+                    <div class="Form-Group">
+                        <select id="shipping" name="shipping" required>
+                            <option value="">Select Shipping Method</option>
+                            <option value="standard" data-price="0">Standard Shipping (5-7 business days) - Free
+                            </option>
+                            <option value="express" data-price="15">Express Shipping (2-3 business days) - $15.00
+                            </option>
+                            <option value="overnight" data-price="25">Overnight Shipping (Next business day) - $25.00
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Information -->
+            <div class="Form-Section">
+                <h3>Payment Method</h3>
+                <div class="Payment-Methods">
+                    <div class="Payment-Method">
+                        <input type="radio" id="credit" name="payment" value="credit" checked>
+                        <label for="credit">Credit Card</label>
+                    </div>
+                    <div class="Payment-Method">
+                        <input type="radio" id="debit" name="payment" value="debit">
+                        <label for="debit">Debit Card</label>
+                    </div>
+                    <div class="Payment-Method">
+                        <input type="radio" id="paypal" name="payment" value="paypal">
+                        <label for="paypal">PayPal</label>
+                    </div>
+                </div>
+
+                <!-- Credit/Debit Card Details -->
+                <div id="cardDetails" class="Payment-Details active">
+                    <div class="Form-Row full">
+                        <div class="Form-Group">
+                            <label for="cardName">Cardholder Name *</label>
+                            <input type="text" id="cardName" name="cardName" required>
+                        </div>
+                    </div>
+                    <div class="Form-Row full">
+                        <div class="Form-Group">
+                            <label for="cardNumber">Card Number *</label>
+                            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456"
+                                maxlength="19" required>
+                        </div>
+                    </div>
+                    <div class="Form-Row">
+                        <div class="Form-Group">
+                            <label for="expiry">Expiry Date *</label>
+                            <input type="text" id="expiry" name="expiry" placeholder="MM/YY" maxlength="5" required>
+                        </div>
+                        <div class="Form-Group">
+                            <label for="cvv">CVV *</label>
+                            <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="4" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PayPal Details -->
+                <div id="paypalDetails" class="Payment-Details">
+                    <p><strong>PayPal Account Email:</strong></p>
+                    <div class="Form-Row full">
+                        <div class="Form-Group">
+                            <label for="paypalEmail">Email Address *</label>
+                            <input type="email" id="paypalEmail" name="paypalEmail">
+                        </div>
+                    </div>
+                    <p style="color: #666; font-size: 12px;">You will be redirected to PayPal to complete the payment.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <button type="submit" class="Place-Order-Btn">Place Order</button>
+            <a href="Cart.html">
+                <button type="button" class="Back-Btn">Back to Cart</button>
+            </a>
+        </form>
+
+        <!-- Right: Order Summary -->
+        <div class="Order-Summary">
+            <h3>Order Summary</h3>
+
+            <div class="Order-Item">
+                <span>Classic White T-Shirt (x1)</span>
+                <span>$29.99</span>
+            </div>
+            <div class="Order-Item">
+                <span>Black Skinny Jeans (x1)</span>
+                <span>$59.99</span>
+            </div>
+            <div class="Order-Item">
+                <span>Casual Leather Sneakers (x1)</span>
+                <span>$89.99</span>
+            </div>
+
+            <div class="Summary-Line">
+                <span>Subtotal:</span>
+                <span>$179.97</span>
+            </div>
+            <div class="Summary-Line" id="shippingLine">
+                <span>Shipping:</span>
+                <span id="shippingCost">$0.00</span>
+            </div>
+            <div class="Summary-Line" id="taxLine">
+                <span>Tax:</span>
+                <span id="taxCost">$14.40</span>
+            </div>
+            <div class="Summary-Line total">
+                <span>Total:</span>
+                <span id="totalCost">$194.37</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div class="Success-Overlay" id="successOverlay"></div>
+    <div class="Success-Message" id="successMessage">
+        <h2>✓ Order Placed Successfully!</h2>
+        <p>Thank you for your purchase</p>
+        <div class="order-number" id="orderNumber"></div>
+        <p style="font-size: 12px; margin-top: 15px;">A confirmation email has been sent to your email address.</p>
+    </div>
+
+    <footer>
+        <p class="p-footer">&copy; 2025 FA$ION. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Constants for price calculations
+        const SUBTOTAL = 179.97;
+        const TAX_RATE = 0.08;
+        const SHIPPING_COSTS = {
+            standard: 0,
+            express: 15,
+            overnight: 25
+        };
+
+        // DOM Elements
+        const form = document.getElementById('checkoutForm');
+        const shippingSelect = document.getElementById('shipping');
+        const cardNumberInput = document.getElementById('cardNumber');
+        const expiryInput = document.getElementById('expiry');
+        const cvvInput = document.getElementById('cvv');
+        const paymentRadios = document.querySelectorAll('input[name="payment"]');
+        const cardDetailsDiv = document.getElementById('cardDetails');
+        const paypalDetailsDiv = document.getElementById('paypalDetails');
+        const successMessage = document.getElementById('successMessage');
+        const successOverlay = document.getElementById('successOverlay');
+        const shippingCostSpan = document.getElementById('shippingCost');
+        const taxCostSpan = document.getElementById('taxCost');
+        const totalCostSpan = document.getElementById('totalCost');
+
+        // 3. Card Number Formatting - Auto-format credit card number
+        cardNumberInput.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\s/g, ''); // Remove spaces
+            let formattedValue = value.replace(/(\d{4})/g, '$1 ').trim(); // Add spaces every 4 digits
+            e.target.value = formattedValue;
+        });
+
+        // Format expiry date (MM/YY)
+        expiryInput.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, ''); // Remove non-digits
+            if (value.length >= 2) {
+                value = value.slice(0, 2) + '/' + value.slice(2, 4);
+            }
+            e.target.value = value;
+        });
+
+        // Format CVV (numbers only)
+        cvvInput.addEventListener('input', function (e) {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+
+        // 5. Interactive Elements - Show/hide payment details based on selected method
+        paymentRadios.forEach(radio => {
+            radio.addEventListener('change', function () {
+                cardDetailsDiv.classList.remove('active');
+                paypalDetailsDiv.classList.remove('active');
+
+                if (this.value === 'paypal') {
+                    paypalDetailsDiv.classList.add('active');
+                } else {
+                    cardDetailsDiv.classList.add('active');
+                }
+            });
+        });
+
+        // 2. Dynamic Calculations - Update total when shipping method changes
+        shippingSelect.addEventListener('change', function () {
+            updateTotals();
+        });
+
+        function updateTotals() {
+            const selectedOption = shippingSelect.options[shippingSelect.selectedIndex];
+            const shippingCost = parseFloat(selectedOption.dataset.price) || 0;
+
+            // Calculate tax on subtotal + shipping
+            const taxableAmount = SUBTOTAL + shippingCost;
+            const tax = parseFloat((taxableAmount * TAX_RATE).toFixed(2));
+            const total = parseFloat((SUBTOTAL + shippingCost + tax).toFixed(2));
+
+            // Update display
+            shippingCostSpan.textContent = '$' + shippingCost.toFixed(2);
+            taxCostSpan.textContent = '$' + tax.toFixed(2);
+            totalCostSpan.textContent = '$' + total.toFixed(2);
+        }
+
+        // 4. Form Submission - Prevent default and handle with JavaScript
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Validate form
+            if (!form.checkValidity()) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            // Additional validation for card details
+            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+
+            if (paymentMethod === 'credit' || paymentMethod === 'debit') {
+                if (!validateCardNumber(cardNumberInput.value)) {
+                    alert('Please enter a valid card number.');
+                    return;
+                }
+                if (!validateExpiry(expiryInput.value)) {
+                    alert('Please enter a valid expiry date (MM/YY).');
+                    return;
+                }
+                if (cvvInput.value.length < 3) {
+                    alert('Please enter a valid CVV.');
+                    return;
+                }
+            }
+
+            // 7. Success Message - Show confirmation after form submission
+            showSuccessMessage();
+        });
+
+        // Validate card number (simple Luhn algorithm)
+        function validateCardNumber(cardNumber) {
+            const cleaned = cardNumber.replace(/\s/g, '');
+            if (!/^\d{13,19}$/.test(cleaned)) return false;
+
+            let sum = 0;
+            let isEven = false;
+            for (let i = cleaned.length - 1; i >= 0; i--) {
+                let digit = parseInt(cleaned.charAt(i), 10);
+                if (isEven) {
+                    digit *= 2;
+                    if (digit > 9) digit -= 9;
+                }
+                sum += digit;
+                isEven = !isEven;
+            }
+            return sum % 10 === 0;
+        }
+
+        // Validate expiry date format
+        function validateExpiry(expiry) {
+            const pattern = /^(0[1-9]|1[0-2])\/\d{2}$/;
+            if (!pattern.test(expiry)) return false;
+
+            const [month, year] = expiry.split('/');
+            const expireDate = new Date(2000 + parseInt(year), parseInt(month) - 1);
+            const today = new Date();
+            return expireDate > today;
+        }
+
+        // Show success message
+        function showSuccessMessage() {
+            const orderNumber = 'FA$-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+            document.getElementById('orderNumber').textContent = 'Order #: ' + orderNumber;
+
+            successOverlay.classList.add('active');
+            successMessage.classList.add('active');
+
+            // Redirect after 3 seconds
+            setTimeout(() => {
+                window.location.href = '../index.html';
+            }, 3000);
+        }
+
+        // Initialize totals on page load
+        document.addEventListener('DOMContentLoaded', updateTotals);
+    </script>
+</body>
+
+</html>

@@ -11,9 +11,11 @@
 <style>
     .Upper-Grid {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between;
+        gap: 25px;
         align-items: center;
         width: 100%;
+        position: relative;
     }
 
     .Company-Logo {
@@ -147,7 +149,7 @@
         transform-origin: center center;
     }
 
-    
+
     .Clothes_Window_Right:hover img,
     .Clothes_Window_Middle:hover img,
     .Clothes_Window_Left:hover img {
@@ -161,7 +163,7 @@
     }
 
 
-/* Side panel styles (CSS-only toggle using checkbox) */
+
     .menu-toggle {
         display: none;
     }
@@ -180,7 +182,7 @@
         padding: 20px;
     }
 
-    /* when the checkbox is checked, show panel and overlay */
+
     #menuToggle:checked~.SidePanel {
         transform: translateX(0);
     }
@@ -211,7 +213,7 @@
         padding: 8px 4px;
     }
 
-    /* Category styles */
+
     .Category {
         margin-bottom: 8px;
     }
@@ -243,7 +245,7 @@
         margin-top: 4px;
     }
 
-    /* Show subItems when checkbox is checked */
+
     .category-toggle:checked+.CategoryLabel+.SubItems {
         display: flex;
     }
@@ -267,7 +269,7 @@
         display: none;
     }
 
-    /* show overlay when checkbox is checked */
+
     #menuToggle:checked~.Overlay {
         display: block;
     }
@@ -308,7 +310,7 @@
         </a>
 
         <div class="Right-Section">
-            <a href="Upper_Grid/Profile-Login-Register.html" aria-label="Go to Profile Login/Register">
+            <a href="Upper_Grid/Login.html" aria-label="Go to Profile Login/Register">
                 <button class="Profile">
                     <img src="Images/Profile-Icon.png" alt="Profile" class="Profile">
                 </button>
@@ -335,10 +337,10 @@
                 <input type="checkbox" id="menToggle" class="category-toggle" hidden>
                 <label for="menToggle" class="CategoryLabel">👕 Men</label>
                 <div class="SubItems">
-                    <a href="../Mens_Clothes/Tops.html">Tops</a>
-                    <a href="../Mens_Clothes/Pants.html">Pants</a>
-                    <a href="../Mens_Clothes/Suits.html">Suits</a>
-                    <a href="../Mens_Clothes/Shoes.html">Shoes</a>
+                    <a href="Mens_Clothes/Tops.html">Tops</a>
+                    <a href="Mens_Clothes/Pants.html">Pants</a>
+                    <a href="Mens_Clothes/Suits.html">Suits</a>
+                    <a href="Mens_Clothes/Shoes.html">Shoes</a>
                 </div>
             </div>
 
@@ -347,10 +349,10 @@
                 <input type="checkbox" id="womenToggle" class="category-toggle" hidden>
                 <label for="womenToggle" class="CategoryLabel">👗 Women</label>
                 <div class="SubItems">
-                    <a href="../Womens_Clothes/Tops.html">Tops</a>
-                    <a href="../Womens_Clothes/Pants.html">Pants</a>
-                    <a href="../Womens_Clothes/Dresses.html">Dresses</a>
-                    <a href="../Womens_Clothes/Shoes.html">Shoes</a>
+                    <a href="Womens_Clothes/Tops.html">Tops</a>
+                    <a href="Womens_Clothes/Pants.html">Pants</a>
+                    <a href="Womens_Clothes/Dresses.html">Dresses</a>
+                    <a href="Womens_Clothes/Shoes.html">Shoes</a>
                 </div>
             </div>
 
@@ -359,10 +361,10 @@
                 <input type="checkbox" id="accessoriesToggle" class="category-toggle" hidden>
                 <label for="accessoriesToggle" class="CategoryLabel">💍 Accessories</label>
                 <div class="SubItems">
-                    <a href="../Accesories/Bags.html">Bags</a>
-                    <a href="../Accesories/Jewelery.html">Jewelry</a>
-                    <a href="../Accesories/Hats.html">Hats</a>
-                    <a href="../Accesories/Watches.html">Watches</a>
+                    <a href="Accesories/Bags.html">Bags</a>
+                    <a href="Accesories/Jewelery.html">Jewelry</a>
+                    <a href="Accesories/Hats.html">Hats</a>
+                    <a href="Accesories/Watches.html">Watches</a>
                 </div>
             </div>
         </nav>
