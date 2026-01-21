@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🏋️‍♂️ Athletic Wear 🏃🏻</title>
-    <link rel="icon" type="image/png" href="../Images/FA$ION-LOGO_png.png">
+    <title>Document</title>
 </head>
 <style>
     .Upper-Grid {
@@ -20,7 +18,7 @@
         width: 150px;
         height: auto;
         border: none;
-        background-color: transparent;
+        background-color: white;
         cursor: pointer;
         margin-right: 13px;
     }
@@ -46,7 +44,7 @@
         width: 50px;
         height: auto;
         border: none;
-        background-color: transparent;
+        background-color: white;
         cursor: pointer;
     }
 
@@ -54,7 +52,7 @@
         width: 70px;
         height: auto;
         border: none;
-        background-color: transparent;
+        background-color: white;
         cursor: pointer;
     }
 
@@ -62,7 +60,7 @@
         width: 45px;
         height: auto;
         border: none;
-        background-color: transparent;
+        background-color: white;
         cursor: pointer;
     }
 
@@ -70,7 +68,7 @@
         width: 45px;
         height: auto;
         border: none;
-        background-color: transparent;
+        background-color: white;
         cursor: pointer;
     }
 
@@ -82,7 +80,6 @@
         padding-left: 10px;
     }
 
-    /* Side panel styles (CSS-only toggle using checkbox) */
     .menu-toggle {
         display: none;
     }
@@ -101,7 +98,7 @@
         padding: 20px;
     }
 
-    /* when the checkbox is checked, show panel and overlay */
+
     #menuToggle:checked~.SidePanel {
         transform: translateX(0);
     }
@@ -132,7 +129,7 @@
         padding: 8px 4px;
     }
 
-    /* Category styles */
+
     .Category {
         margin-bottom: 8px;
     }
@@ -164,7 +161,7 @@
         margin-top: 4px;
     }
 
-    /* Show subItems when checkbox is checked */
+
     .category-toggle:checked+.CategoryLabel+.SubItems {
         display: flex;
     }
@@ -188,52 +185,28 @@
         display: none;
     }
 
-    /* show overlay when checkbox is checked */
+
     #menuToggle:checked~.Overlay {
         display: block;
     }
-
+    
     footer {
         margin-top: 20px;
         padding: 10px 0;
         background-color: #f1f1f18c;
         text-align: center;
+        position: relative;
         width: 100%;
         bottom: 0;
-
     }
 
     .p-footer {
         font-family: Arial, Helvetica, sans-serif;
         font-size: 14px;
-        color: #000000;
+        color: #666;
     }
-
-    h1 {
-        font-family: Helvetica, sans-serif;
-        font-weight: bold;
-        font-size: 60px;
-        color: #ff321f;
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    body {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        background-image:
-        linear-gradient(rgba(153, 153, 153, 0.384), rgba(26, 26, 26, 0.534)),
-        url(https://images.unsplash.com/photo-1562771242-a02d9090c90c?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-        background-size: cover;
-        background-attachment: fixed;
-    }
-
 </style>
-
 <body>
-
-
     <div class="Upper-Grid">
         <div class="Left-Section">
             <label for="menuToggle" class="Menu-Button" role="button" aria-label="Toggle menu"
@@ -265,11 +238,6 @@
             </a>
         </div>
     </div>
-
-
-
-    <h1>🏋️‍♂️ Athletic Wear 🏃🏻</h1>
-    
 
     <input type="checkbox" id="menuToggle" class="menu-toggle" hidden>
     <div id="sidePanel" class="SidePanel" aria-hidden="true">
@@ -313,9 +281,8 @@
         </nav>
     </div>
     <div id="overlay" class="Overlay" aria-hidden="true"></div>
-    <footer>
-        <p class="p-footer">&copy; 2025 FA$ION. All rights reserved.</p>
+     <footer>
+        <p class="p-footer">&copy; 2026 FA$ION. All rights reserved.</p>
     </footer>
 </body>
-
 </html>

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="icon" type="image/png" href="../Images/FA$ION-LOGO.png">
 </head>
 <style>
     .Upper-Grid {
@@ -80,7 +82,7 @@
         padding-left: 10px;
     }
 
-    /* Side panel styles (CSS-only toggle using checkbox) */
+
     .menu-toggle {
         display: none;
     }
@@ -99,7 +101,7 @@
         padding: 20px;
     }
 
-    /* when the checkbox is checked, show panel and overlay */
+
     #menuToggle:checked~.SidePanel {
         transform: translateX(0);
     }
@@ -130,7 +132,7 @@
         padding: 8px 4px;
     }
 
-    /* Category styles */
+
     .Category {
         margin-bottom: 8px;
     }
@@ -162,7 +164,7 @@
         margin-top: 4px;
     }
 
-    /* Show subItems when checkbox is checked */
+
     .category-toggle:checked+.CategoryLabel+.SubItems {
         display: flex;
     }
@@ -186,7 +188,7 @@
         display: none;
     }
 
-    /* show overlay when checkbox is checked */
+
     #menuToggle:checked~.Overlay {
         display: block;
     }
@@ -196,7 +198,7 @@
         padding: 10px 0;
         background-color: #f1f1f18c;
         text-align: center;
-
+        position: relative;
         width: 100%;
         bottom: 0;
 
@@ -206,6 +208,161 @@
         font-family: Arial, Helvetica, sans-serif;
         font-size: 14px;
         color: #666;
+    }
+
+    .shop-layout .shop-wrap {
+        display: flex;
+        gap: 100px;
+        padding: 28px;
+        max-width: 1100px;
+        margin: 20px auto;
+    }
+
+    .shop-sidebar {
+        width: 220px;
+        background: #fff;
+        border-radius: 8px;
+        padding: 16px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+        height: fit-content;
+    }
+
+    .shop-sidebar h2 {
+        margin: 0 0 12px 0;
+        font-size: 18px
+    }
+
+    .filter-btn {
+        display: block;
+        padding: 10px 12px;
+        border-radius: 6px;
+        margin-bottom: 8px;
+        cursor: pointer;
+        background: #f6f6f6;
+    }
+
+    .filter-btn:hover {
+        background: #f1f1f1;
+    }
+
+    #filter-all:checked~.shop-wrap .shop-sidebar label[for="filter-all"],
+    #filter-shirts:checked~.shop-wrap .shop-sidebar label[for="filter-shirts"],
+    #filter-jackets:checked~.shop-wrap .shop-sidebar label[for="filter-jackets"],
+    #filter-tees:checked~.shop-wrap .shop-sidebar label[for="filter-tees"],
+    #filter-hoodies:checked~.shop-wrap .shop-sidebar label[for="filter-hoodies"] {
+        background: #222;
+        color: #fff;
+    }
+
+    .shop-products {
+        flex: 1;
+    }
+
+    .products {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 18px;
+    }
+
+    .card {
+        background: #fff;
+        border-radius: 10px;
+        padding: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        text-align: center;
+        transition: transform .18s ease, box-shadow .18s ease;
+        display: none;
+        /* hidden by default, filter rules will show */
+    }
+
+    .card{display:block;text-decoration:none;color:inherit}
+
+    .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08)
+    }
+
+    .card .thumb {
+        height: 250px;
+        margin-bottom: 5px;
+        border-radius: 6px;
+        background: linear-gradient(135deg, #eee, #ddd);
+    }
+
+    .card .thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 6px
+    }
+
+    .card h3 {
+        font-size: 16px
+    }
+
+    .card .price {
+        color: #2c7be5;
+        font-weight: 700
+    }
+
+    /* Filter behavior using radios and sibling selectors */
+    /* show all when filter-all checked */
+    #filter-all:checked~.shop-wrap .shop-products .products .card {
+        display: block
+    }
+
+    /* hide all then show only matching category */
+    #filter-shirts:checked~.shop-wrap .shop-products .products .card {
+        display: none
+    }
+
+    #filter-shirts:checked~.shop-wrap .shop-products .products .card.cat-shirts {
+        display: block
+    }
+
+    #filter-jackets:checked~.shop-wrap .shop-products .products .card {
+        display: none
+    }
+
+    #filter-jackets:checked~.shop-wrap .shop-products .products .card.cat-jackets {
+        display: block
+    }
+
+    #filter-tees:checked~.shop-wrap .shop-products .products .card {
+        display: none
+    }
+
+    #filter-tees:checked~.shop-wrap .shop-products .products .card.cat-tees {
+        display: block
+    }
+
+    #filter-hoodies:checked~.shop-wrap .shop-products .products .card {
+        display: none
+    }
+
+    #filter-hoodies:checked~.shop-wrap .shop-products .products .card.cat-hoodies {
+        display: block
+    }
+
+    /* responsive */
+    @media (max-width:800px) {
+        .shop-layout .shop-wrap {
+            flex-direction: column;
+            padding: 12px
+        }
+
+        .shop-sidebar {
+            width: 100%;
+            display: flex;
+            gap: 8px;
+            overflow: auto
+        }
+
+        .filter-btn {
+            flex: 1;
+            text-align: center
+        }
     }
 </style>
 
@@ -284,6 +441,80 @@
         </nav>
     </div>
     <div id="overlay" class="Overlay" aria-hidden="true"></div>
+
+
+    <main class="shop-layout">
+
+        <input type="radio" name="shop-cat" id="filter-all" hidden checked>
+        <input type="radio" name="shop-cat" id="filter-shirts" hidden>
+        <input type="radio" name="shop-cat" id="filter-jackets" hidden>
+        <input type="radio" name="shop-cat" id="filter-tees" hidden>
+        <input type="radio" name="shop-cat" id="filter-hoodies" hidden>
+
+        <div class="shop-wrap">
+            <aside class="shop-sidebar">
+                <h2>Category</h2>
+                <label for="filter-all" class="filter-btn">All</label>
+                <label for="filter-shirts" class="filter-btn">Shirts</label>
+                <label for="filter-jackets" class="filter-btn">Sweaters</label>
+                <label for="filter-tees" class="filter-btn">Tees</label>
+                <label for="filter-hoodies" class="filter-btn">Hoodies</label>
+            </aside>
+
+            <section class="shop-products">
+                <div class="products">
+                    <a class="card cat-shirts" href="A&F_Resort_Shirt.html">
+                        <div class="thumb">
+                            <img src="https://img.abercrombie.com/is/image/anf/KIC_125-6061-00367-208_prod1?policy=product-medium" alt="A&F Resort Shirt">
+                        </div>
+                        <h3>A&F Resort Shirt</h3>
+                        <p class="price">$29,99</p>
+                    </a>
+
+                    <a class="card cat-jackets" href="rollneck-crew-sweater.html">
+                        <div class="thumb"><img src="https://img.abercrombie.com/is/image/anf/KIC_120-5297-00633-100_prod1?policy=product-medium" alt="Rollneck Crew Sweater"></div>
+                        <h3>Rollneck Crew Sweater</h3>
+                        <p class="price">$29,99</p>
+                    </a>
+
+                    <a class="card cat-tees" href="graphic-tee.html">
+                        <div class="thumb"><img src="https://img.abercrombie.com/is/image/anf/KIC_123-5339-00641-213_prod1?policy=product-medium" alt="Graphic Tee"></div>
+                        <h3>Graphic Tee</h3>
+                        <p class="price">$19,99</p>
+                    </a>
+
+                    <a class="card cat-shirts" href="oxford-shirt.html">
+                        <div class="thumb"><img src="https://img.abercrombie.com/is/image/anf/KIC_125-6040-00335-220_prod1?policy=product-large" alt="Oxford Shirt"></div>
+                        <h3>Oxford Shirt</h3>
+                        <p class="price">$39,99</p>
+                    </a>
+
+                    <a class="card cat-jackets" href="henley-sweater.html">
+                        <div class="thumb"><img src="https://img.abercrombie.com/is/image/anf/KIC_120-6068-00656-150_prod1?policy=product-medium" alt="Henley Sweater"></div>
+                        <h3>Henley Sweater</h3>
+                        <p class="price">$59,99</p>
+                    </a>
+
+                    <a class="card cat-tees" href="plain-tee.html">
+                        <div class="thumb"><img src="https://img.abercrombie.com/is/image/anf/KIC_124-5787-00798-900_prod1?policy=product-medium" alt="Plain Tee"></div>
+                        <h3>Plain Tee</h3>
+                        <p class="price">$15,99</p>
+                    </a>
+                    <a class="card cat-hoodies" href="guinness-crew-hoodie.html">
+                        <div class="thumb"><img src="https://img.abercrombie.com/is/image/anf/KIC_122-6215-01327-906_prod1?policy=product-large" alt="Guiness Crew Hoodie"></div>
+                        <h3>Guiness Crew Hoodie</h3>
+                        <p class="price">$89,99</p>
+                    </a>
+                    <a class="card cat-hoodies" href="arsenal-hoodie.html">
+                        <div class="thumb"><img src="https://img.abercrombie.com/is/image/anf/KIC_122-5730-01231-906_prod1?policy=product-medium" alt="Arsenal Hoodie"></div>
+                        <h3>Arsenal Hoodie</h3>
+                        <p class="price">$59,99</p>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
     <footer>
         <p class="p-footer">&copy; 2025 FA$ION. All rights reserved.</p>
     </footer>

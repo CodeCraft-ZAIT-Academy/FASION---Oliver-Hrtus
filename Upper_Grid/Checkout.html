@@ -353,8 +353,9 @@
     }
 
     .Place-Order-Btn {
-        width: 100%;
-        padding: 15px;
+        display: inline-block;
+        width: 96.9%;
+        padding: 10px;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
         border: none;
@@ -362,8 +363,10 @@
         font-size: 16px;
         font-weight: bold;
         cursor: pointer;
-        margin-top: 20px;
+        margin-top: 10px;
         transition: transform 0.2s, box-shadow 0.2s;
+        text-align: center;
+        text-decoration: none;
     }
 
     .Place-Order-Btn:hover {
@@ -412,7 +415,6 @@
         padding: 32px;
         font-weight: bold;
         width: 300px;
-        
     }
 
     .Active-Step {
@@ -423,6 +425,10 @@
     }
 
     .Step:last-child {
+        border-right: none;
+    }
+
+    .Step:first-child {
         border-right: none;
     }
 
@@ -593,7 +599,7 @@
     <div id="overlay" class="Overlay" aria-hidden="true"></div>
 
    <div class="Cart-Steps">
-        <a class="Step-Link" href="#">
+        <a class="Step-Link" href="Cart.html">
             <div class="Step">
                 <div class="Step-Label">1. Cart</div>
             </div>
@@ -605,13 +611,13 @@
             </div>
         </a>
 
-        <a class="Step-Link" href="#">
+        <a class="Step-Link" href="">
             <div class="Step">
                 <div class="Step-Label">3. Confirmation</div>
             </div>
         </a>
     </div>
-
+    
     <!-- Main Checkout Content -->
     <div class="Checkout-Container">
         <!-- Left: Form -->
@@ -708,10 +714,6 @@
                         <input type="radio" id="debit" name="payment" value="debit">
                         <label for="debit">Debit Card</label>
                     </div>
-                    <div class="Payment-Method">
-                        <input type="radio" id="paypal" name="payment" value="paypal">
-                        <label for="paypal">PayPal</label>
-                    </div>
                 </div>
 
                 <!-- Credit/Debit Card Details -->
@@ -741,22 +743,10 @@
                     </div>
                 </div>
 
-                <!-- PayPal Details -->
-                <div id="paypalDetails" class="Payment-Details">
-                    <p><strong>PayPal Account Email:</strong></p>
-                    <div class="Form-Row full">
-                        <div class="Form-Group">
-                            <label for="paypalEmail">Email Address *</label>
-                            <input type="email" id="paypalEmail" name="paypalEmail">
-                        </div>
-                    </div>
-                    <p style="color: #666; font-size: 12px;">You will be redirected to PayPal to complete the payment.
-                    </p>
-                </div>
             </div>
 
-            <!-- Buttons -->
-            <button type="submit" class="Place-Order-Btn">Place Order</button>
+            <!-- Buttons (static - no JavaScript) -->
+            <a class="Place-Order-Btn" href="Confirmation.html">Place Order</a>
             <a href="Cart.html">
                 <button type="button" class="Back-Btn">Back to Cart</button>
             </a>
@@ -778,7 +768,6 @@
                 <span>Casual Leather Sneakers (x1)</span>
                 <span>$89.99</span>
             </div>
-
             <div class="Summary-Line">
                 <span>Subtotal:</span>
                 <span>$179.97</span>
@@ -798,178 +787,9 @@
         </div>
     </div>
 
-    <!-- Success Message -->
-    <div class="Success-Overlay" id="successOverlay"></div>
-    <div class="Success-Message" id="successMessage">
-        <h2>✓ Order Placed Successfully!</h2>
-        <p>Thank you for your purchase</p>
-        <div class="order-number" id="orderNumber"></div>
-        <p style="font-size: 12px; margin-top: 15px;">A confirmation email has been sent to your email address.</p>
-    </div>
-
     <footer>
         <p class="p-footer">&copy; 2025 FA$ION. All rights reserved.</p>
     </footer>
-
-    <script>
-        // Constants for price calculations
-        const SUBTOTAL = 179.97;
-        const TAX_RATE = 0.08;
-        const SHIPPING_COSTS = {
-            standard: 0,
-            express: 15,
-            overnight: 25
-        };
-
-        // DOM Elements
-        const form = document.getElementById('checkoutForm');
-        const shippingSelect = document.getElementById('shipping');
-        const cardNumberInput = document.getElementById('cardNumber');
-        const expiryInput = document.getElementById('expiry');
-        const cvvInput = document.getElementById('cvv');
-        const paymentRadios = document.querySelectorAll('input[name="payment"]');
-        const cardDetailsDiv = document.getElementById('cardDetails');
-        const paypalDetailsDiv = document.getElementById('paypalDetails');
-        const successMessage = document.getElementById('successMessage');
-        const successOverlay = document.getElementById('successOverlay');
-        const shippingCostSpan = document.getElementById('shippingCost');
-        const taxCostSpan = document.getElementById('taxCost');
-        const totalCostSpan = document.getElementById('totalCost');
-
-        // 3. Card Number Formatting - Auto-format credit card number
-        cardNumberInput.addEventListener('input', function (e) {
-            let value = e.target.value.replace(/\s/g, ''); // Remove spaces
-            let formattedValue = value.replace(/(\d{4})/g, '$1 ').trim(); // Add spaces every 4 digits
-            e.target.value = formattedValue;
-        });
-
-        // Format expiry date (MM/YY)
-        expiryInput.addEventListener('input', function (e) {
-            let value = e.target.value.replace(/\D/g, ''); // Remove non-digits
-            if (value.length >= 2) {
-                value = value.slice(0, 2) + '/' + value.slice(2, 4);
-            }
-            e.target.value = value;
-        });
-
-        // Format CVV (numbers only)
-        cvvInput.addEventListener('input', function (e) {
-            e.target.value = e.target.value.replace(/\D/g, '');
-        });
-
-        // 5. Interactive Elements - Show/hide payment details based on selected method
-        paymentRadios.forEach(radio => {
-            radio.addEventListener('change', function () {
-                cardDetailsDiv.classList.remove('active');
-                paypalDetailsDiv.classList.remove('active');
-
-                if (this.value === 'paypal') {
-                    paypalDetailsDiv.classList.add('active');
-                } else {
-                    cardDetailsDiv.classList.add('active');
-                }
-            });
-        });
-
-        // 2. Dynamic Calculations - Update total when shipping method changes
-        shippingSelect.addEventListener('change', function () {
-            updateTotals();
-        });
-
-        function updateTotals() {
-            const selectedOption = shippingSelect.options[shippingSelect.selectedIndex];
-            const shippingCost = parseFloat(selectedOption.dataset.price) || 0;
-
-            // Calculate tax on subtotal + shipping
-            const taxableAmount = SUBTOTAL + shippingCost;
-            const tax = parseFloat((taxableAmount * TAX_RATE).toFixed(2));
-            const total = parseFloat((SUBTOTAL + shippingCost + tax).toFixed(2));
-
-            // Update display
-            shippingCostSpan.textContent = '$' + shippingCost.toFixed(2);
-            taxCostSpan.textContent = '$' + tax.toFixed(2);
-            totalCostSpan.textContent = '$' + total.toFixed(2);
-        }
-
-        // 4. Form Submission - Prevent default and handle with JavaScript
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            // Validate form
-            if (!form.checkValidity()) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-
-            // Additional validation for card details
-            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
-
-            if (paymentMethod === 'credit' || paymentMethod === 'debit') {
-                if (!validateCardNumber(cardNumberInput.value)) {
-                    alert('Please enter a valid card number.');
-                    return;
-                }
-                if (!validateExpiry(expiryInput.value)) {
-                    alert('Please enter a valid expiry date (MM/YY).');
-                    return;
-                }
-                if (cvvInput.value.length < 3) {
-                    alert('Please enter a valid CVV.');
-                    return;
-                }
-            }
-
-            // 7. Success Message - Show confirmation after form submission
-            showSuccessMessage();
-        });
-
-        // Validate card number (simple Luhn algorithm)
-        function validateCardNumber(cardNumber) {
-            const cleaned = cardNumber.replace(/\s/g, '');
-            if (!/^\d{13,19}$/.test(cleaned)) return false;
-
-            let sum = 0;
-            let isEven = false;
-            for (let i = cleaned.length - 1; i >= 0; i--) {
-                let digit = parseInt(cleaned.charAt(i), 10);
-                if (isEven) {
-                    digit *= 2;
-                    if (digit > 9) digit -= 9;
-                }
-                sum += digit;
-                isEven = !isEven;
-            }
-            return sum % 10 === 0;
-        }
-
-        // Validate expiry date format
-        function validateExpiry(expiry) {
-            const pattern = /^(0[1-9]|1[0-2])\/\d{2}$/;
-            if (!pattern.test(expiry)) return false;
-
-            const [month, year] = expiry.split('/');
-            const expireDate = new Date(2000 + parseInt(year), parseInt(month) - 1);
-            const today = new Date();
-            return expireDate > today;
-        }
-
-        // Show success message
-        function showSuccessMessage() {
-            const orderNumber = 'FA$-' + Math.random().toString(36).substr(2, 9).toUpperCase();
-            document.getElementById('orderNumber').textContent = 'Order #: ' + orderNumber;
-
-            successOverlay.classList.add('active');
-            successMessage.classList.add('active');
-
-            // Redirect after 3 seconds
-            setTimeout(() => {
-                window.location.href = '../index.html';
-            }, 3000);
-        }
-
-        // Initialize totals on page load
-        document.addEventListener('DOMContentLoaded', updateTotals);
-    </script>
 </body>
 
 </html>
