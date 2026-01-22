@@ -82,7 +82,7 @@
         padding-left: 10px;
     }
 
-    /* Side panel styles (CSS-only toggle using checkbox) */
+    
     .menu-toggle {
         display: none;
     }
@@ -101,7 +101,7 @@
         padding: 20px;
     }
 
-    /* when the checkbox is checked, show panel and overlay */
+    
     #menuToggle:checked~.SidePanel {
         transform: translateX(0);
     }
@@ -132,7 +132,7 @@
         padding: 8px 4px;
     }
 
-    /* Category styles */
+   
     .Category {
         margin-bottom: 8px;
     }
@@ -164,7 +164,7 @@
         margin-top: 4px;
     }
 
-    /* Show subItems when checkbox is checked */
+    
     .category-toggle:checked+.CategoryLabel+.SubItems {
         display: flex;
     }
@@ -188,7 +188,7 @@
         display: none;
     }
 
-    /* show overlay when checkbox is checked */
+    
     #menuToggle:checked~.Overlay {
         display: block;
     }
@@ -210,7 +210,7 @@
         color: #666;
     }
 
-    /* Checkout Page Styles */
+    
     .Checkout-Container {
         max-width: 1200px;
         margin: 40px auto;
@@ -446,7 +446,7 @@
         }
     }
 
-    /* Payment Method Details */
+    
     .Payment-Details {
         display: none;
         margin-top: 20px;
@@ -458,27 +458,6 @@
 
     .Payment-Details.active {
         display: block;
-    }
-
-    /* Success Message */
-    .Success-Message {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: white;
-        padding: 40px;
-        border-radius: 10px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-        z-index: 2000;
-        text-align: center;
-        max-width: 400px;
-    }
-
-    .Success-Message.active {
-        display: block;
-        animation: slideIn 0.5s ease;
     }
 
     @keyframes slideIn {
@@ -493,33 +472,7 @@
         }
     }
 
-    .Success-Message h2 {
-        color: #4caf50;
-        margin-bottom: 15px;
-    }
-
-    .Success-Message p {
-        color: #666;
-        margin-bottom: 20px;
-    }
-
-    .Success-Message .order-number {
-        font-weight: bold;
-        color: #333;
-        margin: 10px 0;
-    }
-
-    .Success-Overlay {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 1999;
-    }
-
-    .Success-Overlay.active {
-        display: block;
-    }
+   
 </style>
 
 <body>
@@ -618,11 +571,11 @@
         </a>
     </div>
     
-    <!-- Main Checkout Content -->
+    
     <div class="Checkout-Container">
-        <!-- Left: Form -->
+        
         <form method="POST" action="" id="checkoutForm" class="Checkout-Form">
-            <!-- Shipping Information -->
+            
             <div class="Form-Section">
                 <h3>Shipping Information</h3>
                 <div class="Form-Row">
@@ -684,7 +637,7 @@
                 </div>
             </div>
 
-            <!-- Shipping Method -->
+            
             <div class="Form-Section">
                 <h3>Shipping Method</h3>
                 <div class="Form-Row full">
@@ -702,7 +655,7 @@
                 </div>
             </div>
 
-            <!-- Payment Information -->
+            
             <div class="Form-Section">
                 <h3>Payment Method</h3>
                 <div class="Payment-Methods">
@@ -716,7 +669,7 @@
                     </div>
                 </div>
 
-                <!-- Credit/Debit Card Details -->
+               
                 <div id="cardDetails" class="Payment-Details active">
                     <div class="Form-Row full">
                         <div class="Form-Group">
@@ -745,14 +698,14 @@
 
             </div>
 
-            <!-- Buttons (static - no JavaScript) -->
+           
             <a class="Place-Order-Btn" href="Confirmation.html">Place Order</a>
             <a href="Cart.html">
                 <button type="button" class="Back-Btn">Back to Cart</button>
             </a>
         </form>
 
-        <!-- Right: Order Summary -->
+       
         <div class="Order-Summary">
             <h3>Order Summary</h3>
 
