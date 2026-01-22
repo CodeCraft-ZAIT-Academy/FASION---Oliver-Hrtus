@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A&F Resort Shirt — FA$ION</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    
+    :root {
+        --bg: #f6f7fb;
+        --card: #fff;
+        --muted: #6b7280;
+        --accent1: #667eea;
+        --accent2: #764ba2;
+    }
+
+    html,
+    body {
+        height: 100%
+    }
+
+    body {
+        margin: 0;
+        font-family:system-ui, 'Segoe UI','Helvetica Neue', Arial;
+        
+        color: #111827;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .Upper-Grid {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        border-bottom: 2px solid gray;
+        width: 100%;
+    }
+
+    .Company-Logo {
+        width: 150px;
+        height: auto;
+        border: none;
+        background-color: white;
+        cursor: pointer;
+        margin-right: 13px;
+    }
+
+    .Left-Section {
+        width: 650px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 100px;
+    }
+
+    .Right-Section {
+        width: 650px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .Menu-Button {
+        width: 50px;
+        height: auto;
+        border: none;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .Profile {
+        width: 70px;
+        height: auto;
+        border: none;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .Wishlist {
+        width: 45px;
+        height: auto;
+        border: none;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .Shopping-Bag {
+        width: 45px;
+        height: auto;
+        border: none;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    .Search-Bar {
+        width: 400px;
+        height: 30px;
+        border: 2px solid gray;
+        border-radius: 10px;
+        padding-left: 10px;
+    }
+
+
+    .menu-toggle {
+        display: none;
+    }
+
+    .SidePanel {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        width: 280px;
+        background: #ffffff;
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+        transform: translateX(-110%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+        padding: 20px;
+    }
+
+
+    #menuToggle:checked~.SidePanel {
+        transform: translateX(0);
+    }
+
+    .Close-Button {
+        background: none;
+        border: none;
+        font-size: 28px;
+        position: absolute;
+        right: 12px;
+        top: 8px;
+        cursor: pointer;
+        display: inline-block;
+        padding: 2px 6px;
+    }
+
+    .SideNav {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .SideNav a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        padding: 8px 4px;
+    }
+
+
+    .Category {
+        margin-bottom: 8px;
+    }
+
+    .category-toggle {
+        display: none;
+    }
+
+    .CategoryLabel {
+        display: block;
+        padding: 12px 8px;
+        font-weight: bold;
+        color: #333;
+        cursor: pointer;
+        user-select: none;
+        border-radius: 4px;
+        transition: background 0.2s;
+    }
+
+    .CategoryLabel:hover {
+        background-color: #f0f0f0;
+    }
+
+    .SubItems {
+        display: none;
+        flex-direction: column;
+        gap: 4px;
+        padding-left: 16px;
+        margin-top: 4px;
+    }
+
+
+    .category-toggle:checked+.CategoryLabel+.SubItems {
+        display: flex;
+    }
+
+    .SubItems a {
+        padding: 8px 4px;
+        font-size: 14px;
+        color: #555;
+    }
+
+    .SubItems a:hover {
+        color: #000;
+        font-weight: 600;
+    }
+
+    .Overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 900;
+        display: none;
+    }
+
+
+    #menuToggle:checked~.Overlay {
+        display: block;
+    }
+
+    footer {
+        margin-top: 20px;
+        padding: 10px 0;
+        background-color: #f1f1f18c;
+        text-align: center;
+        position: relative;
+        width: 100%;
+        bottom: 0;
+
+    }
+
+    .p-footer {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        color: #666;
+    }
+
+   
+    .product-main {
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 20px
+    }
+
+    .product-card {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        background: var(--card);
+        border-radius: 14px;
+        padding: 22px;
+        box-shadow: 0 10px 30px rgba(16, 24, 40, 0.06)
+    }
+
+    @media(min-width:900px) {
+        .product-card {
+            grid-template-columns: 460px 1fr;
+            align-items: start
+        }
+    }
+
+    .product-image {
+        display: flex;
+        flex-direction: column;
+        gap: 12px
+    }
+
+    .product-image figure {
+        margin: 0
+    }
+
+    .product-image img#mainImage {
+        width: 100%;
+        height: 360px;
+        object-fit: cover;
+        border-radius: 10px;
+        transition: transform .25s ease
+    }
+
+    @media(min-width:900px) {
+        .product-image img#mainImage {
+            height: 460px
+        }
+    }
+
+    .product-image img#mainImage:hover {
+        transform: scale(1.02)
+    }
+
+    .thumbs {
+        display: flex;
+        gap: 8px
+    }
+
+    .thumbs img {
+        width: 64px;
+        height: 64px;
+        object-fit: cover;
+        border-radius: 8px;
+        cursor: pointer;
+        border: 2px solid transparent
+    }
+
+    .thumbs img:focus,
+    .thumbs img:hover {
+        outline: none;
+        border-color: var(--accent1)
+    }
+
+    .product-details h1 {
+        margin: 0 0 8px;
+        font-size: 26px
+    }
+
+    .price {
+        color: var(--accent2);
+        font-weight: 800;
+        font-size: 22px;
+        margin: 6px 0
+    }
+
+    .desc {
+        color: var(--muted);
+        margin: 10px 0
+    }
+
+    .variants {
+        margin: 12px 0
+    }
+
+    .size-options {
+        display: flex;
+        gap: 8px;
+        margin-top: 8px
+    }
+
+    .size {
+        background: #f4f6fb;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        color: #111827
+    }
+
+    .size[aria-checked="true"] {
+        background: linear-gradient(135deg, var(--accent1), var(--accent2));
+        color: #fff
+    }
+
+    .size:focus {
+        outline: 2px solid rgba(102, 126, 234, 0.22);
+        outline-offset: 2px
+    }
+
+    .actions {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        margin-top: 10px
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 12px 16px;
+        border-radius: 10px;
+        color: #fff;
+        text-decoration: none;
+        background: linear-gradient(135deg, var(--accent1) 0%, var(--accent2) 100%);
+        font-weight: 700;
+        box-shadow: 0 6px 18px rgba(102, 126, 234, 0.12)
+    }
+
+    .btn.ghost {
+        background: transparent;
+        color: var(--accent2);
+        border: 1px solid #eef2ff
+    }
+
+    .btn:active {
+        transform: translateY(1px)
+    }
+
+    
+    footer {
+        margin-top: 20px;
+        padding: 18px 0;
+        background: transparent;
+        text-align: center
+    }
+
+    .p-footer {
+        font-size: 14px;
+        color: #6b7280
+    }
+
+    
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0
+    }
+
+    
+    .gallery-input {
+        display: none
+    }
+
+    .gallery-main img {
+        display: none;
+        width: 100%;
+        height: 360px;
+        object-fit: cover;
+        border-radius: 10px
+    }
+
+    @media(min-width:900px) {
+        .gallery-main img {
+            height: 460px
+        }
+    }
+
+    #g1:checked~.gallery-main .g1,
+    #g2:checked~.gallery-main .g2,
+    #g3:checked~.gallery-main .g3 {
+        display: block
+    }
+
+    
+    #g1:checked~.thumbs label[for="g1"] img {
+        border-color: var(--accent1)
+    }
+
+    
+    .size-input {
+        display: none
+    }
+
+    .size {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 44px
+    }
+
+    .size-input:checked+.size {
+        background: linear-gradient(135deg, var(--accent1), var(--accent2));
+        color: #fff
+    }
+</style>
+
+<body>
+    <div class="Upper-Grid">
+        <div class="Left-Section">
+            <label for="menuToggle" class="Menu-Button" role="button" aria-label="Toggle menu"
+                aria-controls="sidePanel">
+                <img src="../Images/Menu-Icon.png" alt="Menu" class="Menu-Button">
+            </label>
+            <input type="text" class="Search-Bar" placeholder="Search">
+        </div>
+        <a href="../index.html" aria-label="Go to Home Page">
+            <button class="Company-Logo">
+                <img src="../Images/FA$ION-LOGO_png.png" alt="FA$ION Logo" class="Company-Logo">
+            </button>
+        </a>
+        <div class="Right-Section">
+            <a href="../Upper_Grid/Login.html" aria-label="Go to Profile Login/Register">
+                <button class="Profile">
+                    <img src="../Images/Profile-Icon.png" alt="Profile" class="Profile">
+                </button>
+            </a>
+            <a href="../Upper_Grid/Whishlist.html">
+                <button class="Wishlist">
+                    <img src="../Images/Wishlist-Icon.png" alt="Wishlist" class="Wishlist">
+                </button>
+            </a>
+            <a href="../Upper_Grid/Cart.html">
+                <button class="Shopping-Bag">
+                    <img src="../Images/ShoppingBag-Icon.png" alt="Shopping Bag" class="Shopping-Bag">
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <input type="checkbox" id="menuToggle" class="menu-toggle" hidden>
+    <div id="sidePanel" class="SidePanel" aria-hidden="true">
+        <label for="menuToggle" class="Close-Button" aria-label="Close menu">&times;</label>
+        <nav class="SideNav">
+            <!-- Men Category -->
+            <div class="Category">
+                <input type="checkbox" id="menToggle" class="category-toggle" hidden>
+                <label for="menToggle" class="CategoryLabel">👕 Men</label>
+                <div class="SubItems">
+                    <a href="../Mens_Clothes/Tops.html">Tops</a>
+                    <a href="../Mens_Clothes/Pants.html">Pants</a>
+                    <a href="../Mens_Clothes/Suits.html">Suits</a>
+                    <a href="../Mens_Clothes/Shoes.html">Shoes</a>
+                </div>
+            </div>
+
+            <!-- Women Category -->
+            <div class="Category">
+                <input type="checkbox" id="womenToggle" class="category-toggle" hidden>
+                <label for="womenToggle" class="CategoryLabel">👗 Women</label>
+                <div class="SubItems">
+                    <a href="../Womens_Clothes/Tops.html">Tops</a>
+                    <a href="../Womens_Clothes/Pants.html">Pants</a>
+                    <a href="../Womens_Clothes/Dresses.html">Dresses</a>
+                    <a href="../Womens_Clothes/Shoes.html">Shoes</a>
+                </div>
+            </div>
+
+            <!-- Accessories Category -->
+            <div class="Category">
+                <input type="checkbox" id="accessoriesToggle" class="category-toggle" hidden>
+                <label for="accessoriesToggle" class="CategoryLabel">💍 Accessories</label>
+                <div class="SubItems">
+                    <a href="../Accesories/Bags.html">Bags</a>
+                    <a href="../Accesories/Jewelery.html">Jewelry</a>
+                    <a href="../Accesories/Hats.html">Hats</a>
+                    <a href="../Accesories/Watches.html">Watches</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div id="overlay" class="Overlay" aria-hidden="true"></div>
+
+    <main class="product-main">
+        <div class="product-card">
+            <div class="product-image">
+                
+                <input type="radio" name="gallery" id="g1" class="gallery-input" checked hidden>
+                <figure class="gallery-main">
+                    <img class="g1"
+                        src="https://images.footballfanatics.com/scuderia-ferrari/scuderia-ferrari-2025-drivers-t7-oversized-pants-red_ss5_p-202359096+u-ljpt90gvz8ikgazzgbuf+v-01vqoxbyplxhsplvk6op.jpg?_hv=2&w=532"
+                        alt="Scuderia Ferrari T7 Oversized Pants">
+                </figure>
+            </div>
+            <div class="product-details">
+                <h1>Scuderia Ferrari T7 Oversized Pants</h1>
+                <div class="price">$49.99</div>
+                <p class="desc">The relaxed fit with wide legs is great for a casual outfit that shows your passion and support for the Scuderia Ferrari team, with the iconic badge on the right thigh. Three zipped pockets let you carry essentials and the drawstring waist ensures you'll have a perfect fit every time.</p>
+                <div class="variants"><strong>Sizes:</strong>
+                    <div class="size-options" role="radiogroup" aria-label="Select size">
+                        <input type="radio" name="size" id="size-s" class="size-input" checked hidden>
+                        <label for="size-s" class="size">S</label>
+
+                        <input type="radio" name="size" id="size-m" class="size-input" hidden>
+                        <label for="size-m" class="size">M</label>
+
+                        <input type="radio" name="size" id="size-l" class="size-input" hidden>
+                        <label for="size-l" class="size">L</label>
+
+                        <input type="radio" name="size" id="size-xl" class="size-input" hidden>
+                        <label for="size-xl" class="size">XL</label>
+                    </div>
+                </div>
+                <div class="actions">
+                    <a class="btn" href="../Upper_Grid/Cart.html">Add to Cart</a>
+                    <a class="btn ghost" href="Ferrari.html">Back to Ferrari</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p class="p-footer">&copy; 2026 FA$ION. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
