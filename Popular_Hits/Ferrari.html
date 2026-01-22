@@ -20,7 +20,7 @@
         width: 150px;
         height: auto;
         border: none;
-        background-color: white;
+        background-color: transparent;
         cursor: pointer;
         margin-right: 13px;
     }
@@ -46,32 +46,32 @@
         width: 50px;
         height: auto;
         border: none;
-        background-color: white;
         cursor: pointer;
+        background-color: transparent;
     }
 
     .Profile {
         width: 70px;
         height: auto;
         border: none;
-        background-color: white;
         cursor: pointer;
+        background-color: transparent;
     }
 
     .Wishlist {
         width: 45px;
         height: auto;
         border: none;
-        background-color: white;
         cursor: pointer;
+        background-color: transparent;
     }
 
     .Shopping-Bag {
         width: 45px;
         height: auto;
         border: none;
-        background-color: white;
         cursor: pointer;
+        background-color: transparent;
     }
 
     .Search-Bar {
@@ -274,7 +274,11 @@
         display: none;
     }
 
-    .card{display:block;text-decoration:none;color:inherit}
+    .card {
+        display: block;
+        text-decoration: none;
+        color: inherit
+    }
 
     .card:hover {
         transform: translateY(-6px);
@@ -305,12 +309,12 @@
         font-weight: 700
     }
 
-    
+
     #filter-all:checked~.shop-wrap .shop-products .products .card {
         display: block
     }
 
-    
+
     #filter-shirts:checked~.shop-wrap .shop-products .products .card {
         display: none
     }
@@ -343,7 +347,7 @@
         display: block
     }
 
-    
+
     @media (max-width:800px) {
         .shop-layout .shop-wrap {
             flex-direction: column;
@@ -361,6 +365,17 @@
             flex: 1;
             text-align: center
         }
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-image:
+            linear-gradient(rgba(234, 0, 0, 0.384), rgba(90, 0, 0, 0.534)),
+            url(https://wallpapers.com/images/hd/scuderia-ferrari-logo-f9tfmoauaxlobmum.jpg);
+        background-size: cover;
+        background-attachment: fixed;
     }
 </style>
 
@@ -463,48 +478,63 @@
                 <div class="products">
                     <a class="card cat-shirts" href="F_Red_T-shirt.html">
                         <div class="thumb">
-                            <img src="https://images.footballfanatics.com/scuderia-ferrari/scuderia-ferrari-2025-20-years-of-red-t-shirt_ss5_p-202620491+u-9ig481mkydy65s3lxrnn+v-baz3jdnx3skja8vbdvrl.jpg?_hv=2&w=532" alt="A&F Resort Shirt">
+                            <img src="https://images.footballfanatics.com/scuderia-ferrari/scuderia-ferrari-2025-20-years-of-red-t-shirt_ss5_p-202620491+u-9ig481mkydy65s3lxrnn+v-baz3jdnx3skja8vbdvrl.jpg?_hv=2&w=532"
+                                alt="A&F Resort Shirt">
                         </div>
                         <h3>Scuderia Ferrari 20 Years of Red T-Shirt</h3>
                         <p class="price">$69,99</p>
                     </a>
 
                     <a class="card cat-jackets" href="#">
-                        <div class="thumb"><img src="https://images.footballfanatics.com/scuderia-ferrari/scuderia-ferrari-2025-team-charles-leclerc-cap-white_ss5_p-202359097+u-kloy7ehzt2nhzw6wpm3l+v-jbwyu76meinnbzzgxc1z.jpg?_hv=2&w=532" alt="Rollneck Crew Sweater"></div>
+                        <div class="thumb"><img
+                                src="https://images.footballfanatics.com/scuderia-ferrari/scuderia-ferrari-2025-team-charles-leclerc-cap-white_ss5_p-202359097+u-kloy7ehzt2nhzw6wpm3l+v-jbwyu76meinnbzzgxc1z.jpg?_hv=2&w=532"
+                                alt="Rollneck Crew Sweater"></div>
                         <h3>Scuderia Ferrari 2025 Team Charles Leclerc Cap</h3>
                         <p class="price">$29,99</p>
                     </a>
 
                     <a class="card cat-tees" href="#">
-                        <div class="thumb"><img src="https://images.footballfanatics.com/scuderia-ferrari/scuderia-ferrari-2025-drivers-t7-oversized-pants-red_ss5_p-202359096+u-ljpt90gvz8ikgazzgbuf+v-01vqoxbyplxhsplvk6op.jpg?_hv=2&w=532" alt="Graphic Tee"></div>
+                        <div class="thumb"><img
+                                src="https://images.footballfanatics.com/scuderia-ferrari/scuderia-ferrari-2025-drivers-t7-oversized-pants-red_ss5_p-202359096+u-ljpt90gvz8ikgazzgbuf+v-01vqoxbyplxhsplvk6op.jpg?_hv=2&w=532"
+                                alt="Graphic Tee"></div>
                         <h3>Scuderia Ferrari T7 Oversized Pants</h3>
                         <p class="price">$49,99</p>
                     </a>
 
                     <a class="card cat-tees" href="x">
-                        <div class="thumb"><img src="https://images.footballfanatics.com/scuderia-ferrari/scuderia-ferrari-race-premium-trousers-by-puma_ss5_p-201658912+u-k3gs2edynryj4xsyv5dd+v-2xlhohycgw9a1siu3y72.jpg?_hv=2&w=532" alt="Oxford Shirt"></div>
+                        <div class="thumb"><img
+                                src="https://images.footballfanatics.com/scuderia-ferrari/scuderia-ferrari-race-premium-trousers-by-puma_ss5_p-201658912+u-k3gs2edynryj4xsyv5dd+v-2xlhohycgw9a1siu3y72.jpg?_hv=2&w=532"
+                                alt="Oxford Shirt"></div>
                         <h3>Scuderia Ferrari Race Premium Trousers</h3>
                         <p class="price">$59,99</p>
                     </a>
 
                     <a class="card cat-hoodies" href="#">
-                        <div class="thumb"><img src="https://images.footballfanatics.com/scuderia-ferrari/scuderia-ferrari-2025-team-racing-jacket_ss5_p-202358984+u-zjlu5wnqp5wf24kftwd0+v-bhuatcwgklom0keaxdob.jpg?_hv=2&w=532" alt="Henley Sweater"></div>
+                        <div class="thumb"><img
+                                src="https://images.footballfanatics.com/scuderia-ferrari/scuderia-ferrari-2025-team-racing-jacket_ss5_p-202358984+u-zjlu5wnqp5wf24kftwd0+v-bhuatcwgklom0keaxdob.jpg?_hv=2&w=532"
+                                alt="Henley Sweater"></div>
                         <h3>Scuderia Ferrari 2025 Team Racing Jacket</h3>
                         <p class="price">$99,99</p>
                     </a>
 
                     <a class="card cat-jackets" href="#">
-                        <div class="thumb"><img src="https://images.footballfanatics.com/scuderia-ferrari/scuderia-ferrari-2025-team-lewis-hamilton-cap-white_ss5_p-202358979+u-gq5oeycuix4ewgkqpq4f+v-cbvk6bvslonb7jmwstao.jpg?_hv=2&w=532" alt="Plain Tee"></div>
+                        <div class="thumb"><img
+                                src="https://images.footballfanatics.com/scuderia-ferrari/scuderia-ferrari-2025-team-lewis-hamilton-cap-white_ss5_p-202358979+u-gq5oeycuix4ewgkqpq4f+v-cbvk6bvslonb7jmwstao.jpg?_hv=2&w=532"
+                                alt="Plain Tee"></div>
                         <h3>Scuderia Ferrari 2025 Team Lewis Hamilton Cap</h3>
                         <p class="price">$39,99</p>
                     </a>
                     <a class="card cat-shirts" href="#">
-                        <div class="thumb"><img src="https://images.footballfanatics.com/scuderia-ferrari/ferrari-speed-t-shirt-by-puma-beige_ss5_p-203169249+u-jboyovgf4dqentdqma7i+v-d8xn9na2gp9npxlp1lja.jpg?_hv=2&w=532" alt="Guiness Crew Hoodie"></div>
+                        <div class="thumb"><img
+                                src="https://images.footballfanatics.com/scuderia-ferrari/ferrari-speed-t-shirt-by-puma-beige_ss5_p-203169249+u-jboyovgf4dqentdqma7i+v-d8xn9na2gp9npxlp1lja.jpg?_hv=2&w=532"
+                                alt="Guiness Crew Hoodie"></div>
                         <h3>Ferrari Speed T-Shirt</h3>
                         <p class="price">$89,99</p>
                     </a>
                     <a class="card cat-hoodies" href="#">
-                        <div class="thumb"><img src="https://images.footballfanatics.com/scuderia-ferrari/ferrari-sweatshirt-by-puma-red_ss5_p-203169266+u-adqyqzh863miyqz717zz+v-gq4bom8hxxy1cfda7hr2.jpg?_hv=2&w=532" alt="Arsenal Hoodie"></div>
+                        <div class="thumb"><img
+                                src="https://images.footballfanatics.com/scuderia-ferrari/ferrari-sweatshirt-by-puma-red_ss5_p-203169266+u-adqyqzh863miyqz717zz+v-gq4bom8hxxy1cfda7hr2.jpg?_hv=2&w=532"
+                                alt="Arsenal Hoodie"></div>
                         <h3>Ferrari Sweatshirt</h3>
                         <p class="price">$59,99</p>
                     </a>
