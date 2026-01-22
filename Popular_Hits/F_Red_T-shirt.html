@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <style>
+    
     :root {
         --bg: #f6f7fb;
         --card: #fff;
@@ -232,7 +233,7 @@
         color: #666;
     }
 
-    
+    /* Product area */
     .product-main {
         max-width: 1100px;
         margin: 40px auto;
@@ -379,7 +380,7 @@
         transform: translateY(1px)
     }
 
-    
+    /* Footer */
     footer {
         margin-top: 20px;
         padding: 18px 0;
@@ -392,7 +393,7 @@
         color: #6b7280
     }
 
-    
+    /* Accessibility helper */
     .sr-only {
         position: absolute;
         width: 1px;
@@ -405,7 +406,7 @@
         border: 0
     }
 
-    
+    /* CSS-only gallery behavior */
     .gallery-input {
         display: none
     }
@@ -424,16 +425,18 @@
         }
     }
 
-    #g1:checked~.gallery-main .g1 {
+    #g1:checked~.gallery-main .g1,
+    #g2:checked~.gallery-main .g2,
+    #g3:checked~.gallery-main .g3 {
         display: block
     }
 
-    
+    /* highlight thumbnail when its radio is checked */
     #g1:checked~.thumbs label[for="g1"] img {
         border-color: var(--accent1)
     }
 
-    
+    /* CSS-only size selector */
     .size-input {
         display: none
     }
@@ -534,14 +537,14 @@
                 <input type="radio" name="gallery" id="g1" class="gallery-input" checked hidden>
                 <figure class="gallery-main">
                     <img class="g1"
-                        src="https://img.abercrombie.com/is/image/anf/KIC_120-5297-00633-100_prod1?policy=product-medium"
+                        src="https://images.footballfanatics.com/scuderia-ferrari/scuderia-ferrari-2025-20-years-of-red-t-shirt_ss5_p-202620491+u-9ig481mkydy65s3lxrnn+v-baz3jdnx3skja8vbdvrl.jpg?_hv=2&w=532"
                         alt="A&F Resort Shirt">
                 </figure>
             </div>
             <div class="product-details">
-                <h1>Rollneck Crew Sweater</h1>
-                <div class="price">$49.99</div>
-                <p class="desc">A clean, off-white knit sweater with a minimalist design, featuring raglan-style sleeves, subtle textured stitching, and ribbed cuffs and hem. It has a relaxed, cozy fit with a timeless, understated look perfect for casual or smart-casual wear.</p>
+                <h1>Scuderia Ferrari 20 Years of Red T-Shirt</h1>
+                <div class="price">$69.99</div>
+                <p class="desc">Support Scuderia Ferrari at the 2025 Vegas GP with this special edition t-shirt. Team and sponsor branding give it a classic F1 look.</p>
                 <div class="variants"><strong>Sizes:</strong>
                     <div class="size-options" role="radiogroup" aria-label="Select size">
                         <input type="radio" name="size" id="size-s" class="size-input" checked hidden>
@@ -559,7 +562,7 @@
                 </div>
                 <div class="actions">
                     <a class="btn" href="../Upper_Grid/Cart.html">Add to Cart</a>
-                    <a class="btn ghost" href="Tops.html">Back to Tops</a>
+                    <a class="btn ghost" href="Ferrari.html">Back to Ferrari</a>
                 </div>
             </div>
         </div>

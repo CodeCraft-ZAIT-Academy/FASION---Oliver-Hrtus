@@ -216,7 +216,7 @@
         color: #ff2814;
         text-align: center;
         margin-top: 20px;
-        
+
     }
 
     body {
@@ -303,8 +303,6 @@
         box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12)
     }
 
-    
-
     .team-thumb {
         height: 110px;
         border-radius: 8px;
@@ -327,16 +325,23 @@
         transform: translateY(12px) scale(.98);
         transition: opacity .22s ease, transform .22s ease;
     }
-    
+
     /* reveal image when hovering the card */
-    .team-card:hover .team-thumb img{
+    .team-card:hover .team-thumb img {
         opacity: 1;
         transform: translateY(0) scale(1.03);
     }
-    .team-card:hover p{
+
+    .team-card:hover p {
         opacity: 1;
-        transform: translateZ(10px) 
+        transform: translateZ(10px)
     }
+
+    .team-card a {
+        text-decoration: none;
+        color: inherit;
+    }
+
     .team-name {
         font-weight: 800;
         margin: 0 0 6px
@@ -452,7 +457,9 @@
         color: #000000;
         margin: 10px 0 5px 0;
         text-align: center;
+        text-decoration: none;
     }
+
     p {
         font-size: 50px;
         margin: 1px 0 5px 0;
@@ -461,7 +468,6 @@
         transform: translateZ(15px) scale(.98);
         transition: opacity .22s ease, transform .22s ease;
     }
-
 </style>
 
 <body>
@@ -503,16 +509,21 @@
 
     <h1>🏎️ Clothes Inspired By F1 🏁</h1>
 
-    
+
 
     <section class="f1-grid">
+
         <article class="team-card team-ferrari">
-            <div class="team-thumb" style="background-image:linear-gradient(135deg,#b30000,#ff5a5a)">
-                <img src="https://pngimg.com/d/ferrari_PNG10665.png" alt="" style="width: 90%; height: 90%">
-            </div>
-            <h3 class="team-name">Ferrari</h3>
-            
-            
+            <a href="Ferrari.html">
+                <div class="team-thumb" style="background-image:linear-gradient(135deg,#b30000,#ff5a5a)">
+                    <img src="https://pngimg.com/d/ferrari_PNG10665.png" alt="" style="width: 90%; height: 90%">
+                </div>
+                <h3 class="team-name">Ferrari</h3>
+            </a>
+        </article>
+
+
+
         </article>
 
         <article class="team-card team-mclaren">
@@ -520,25 +531,27 @@
                 <img src="https://pngimg.com/d/mclaren_PNG14.png" alt="">
             </div>
             <h3 class="team-name">McLaren</h3>
-           
-            
+
+
         </article>
 
         <article class="team-card team-redbull">
             <div class="team-thumb" style="background-image:linear-gradient(135deg,#0f2ea8,#2b6df6)">
-                <img src="https://pngimg.com/d/red_bull_PNG20.png" alt="" style="width: 80%; height: 80%; margin-left: 10px;">
+                <img src="https://pngimg.com/d/red_bull_PNG20.png" alt=""
+                    style="width: 80%; height: 80%; margin-left: 10px;">
             </div>
             <h3 class="team-name">Red Bull</h3>
-            
-            
+
+
         </article>
 
         <article class="team-card team-haas">
             <div class="team-thumb" style="background-image:linear-gradient(135deg,#000,#7a7a7a)">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Logo_Haas_F1.png" alt="" style="width: 70%; height: 70%">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Logo_Haas_F1.png" alt=""
+                    style="width: 70%; height: 70%">
             </div>
             <h3 class="team-name">Haas</h3>
-           
+
         </article>
 
         <article class="team-card team-alpine">
@@ -546,7 +559,7 @@
                 <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/1/1f/Alpine.svg/1200px-Alpine.svg.png" alt="">
             </div>
             <h3 class="team-name">Alpine</h3>
-          
+
         </article>
 
         <article class="team-card team-aston">
@@ -554,7 +567,7 @@
                 <img src="https://pngimg.com/d/aston_martin_PNG18.png" alt="" style="width: 80%; height: 80%">
             </div>
             <h3 class="team-name">Aston Martin</h3>
-          
+
         </article>
 
         <article class="team-card team-williams">
@@ -562,31 +575,34 @@
                 <img src="https://logodix.com/logo/615459.png" alt="" style="width: 75%; height: 75%">
             </div>
             <h3 class="team-name">Williams</h3>
-           
+
         </article>
 
         <article class="team-card team-kick">
             <div class="team-thumb" style="background-image:linear-gradient(135deg,#00b819,#39e367)">
-                <img src="https://i.namu.wiki/i/M2DRCcTYlEVr82u-N5ggwF2VtxLxzEwqiouKWpQfWgUr2qTV_9BSNBwDZEInzcM6Y945X3YCpHoQZ8f0pC5TXQ.svg" alt="" style="width: 80%; height: 80%">
+                <img src="https://i.namu.wiki/i/M2DRCcTYlEVr82u-N5ggwF2VtxLxzEwqiouKWpQfWgUr2qTV_9BSNBwDZEInzcM6Y945X3YCpHoQZ8f0pC5TXQ.svg"
+                    alt="" style="width: 80%; height: 80%">
             </div>
             <h3 class="team-name">Kick Sauber</h3>
-           
+
         </article>
 
         <article class="team-card team-mercedes">
             <div class="team-thumb" style="background-image:linear-gradient(135deg,#00c3d8,#6dfff0)">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Mercedes-Logo.svg/960px-Mercedes-Logo.svg.png" alt="" style="width: 80%; height: 80%;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Mercedes-Logo.svg/960px-Mercedes-Logo.svg.png"
+                    alt="" style="width: 80%; height: 80%;">
             </div>
             <h3 class="team-name">Mercedes</h3>
-           
+
         </article>
 
         <article class="team-card team-racing">
             <div class="team-thumb" style="background-image:linear-gradient(135deg,#0080e2,#54aaff)">
-                <img src="https://r2.thesportsdb.com/images/media/team/badge/ot7pjx1740775883.png" alt="" style="width: 85%; height: 85%;">
+                <img src="https://r2.thesportsdb.com/images/media/team/badge/ot7pjx1740775883.png" alt=""
+                    style="width: 85%; height: 85%;">
             </div>
             <h3 class="team-name">Racing bulls</h3>
-           
+
         </article>
     </section>
 
